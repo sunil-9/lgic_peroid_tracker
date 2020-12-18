@@ -1,0 +1,35 @@
+<resources>
+    <string name="app_name">iFemini</string>
+    <string name="overview">Overview</string>
+    <string name="calendar">Calendar</string>
+    <string name="history">History</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="select_your_date">Select your date:</string>
+    <string name="mark_as_a_peroid">Mark as a Period?</string>
+    <string name="login">Log In</string>
+    <string name="register">Register</string>
+    <string name="log_out">Log Out</string>
+    <string name="profile">Profile</string>
+    <string name="exit">Exit</string>
+    <string name="avg_cycle_length"> Period Cycle </string>
+    <string name="avg_period_length"> Period Length</string>
+    <string name="cycle_details">Cycle Details</string>
+    <string name="the_length_of_your_peroid_cycle">Click here To change Period cycle</string>
+    <string name="the_length_of_your_peroid">Click here To change Period Length</string>
+    <string name="peroid_length">Period Length</string>
+    <string name="peroid_cycle">Period cycle</string>
+    <string name="title">title</string>
+    <string name="accept_terms_and_condition">Accept terms and condition</string>
+    <string name="select_date">Select Date</string>
+    <string name="select_last_peroid_date">Select Last Period Date</string>
+    <string name="period_length">Period length     default 4</string>
+    <string name="period_cycle">Period Cycle default 28 </string>
+    <string name="user_name">User Name</string>
+    <string name="_4">4</string>
+    <string name="_28">28</string>
+    <string name="remaining">Remaining</string>
+    <string name="your_last_period_date">Your last period date</string>
+    <string name="your_history">Your History</string>
+
+</resources>

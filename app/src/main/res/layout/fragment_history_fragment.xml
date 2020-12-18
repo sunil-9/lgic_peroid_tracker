@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragments.HistoryFragment">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:columnCount="2"
+        android:layout_marginTop="24dp"
+        android:layout_marginBottom="32dp"
+        android:layout_gravity="center"
+        android:textAlignment="center"
+        android:alignmentMode="alignBounds">
+
+        <TextView
+            android:id="@+id/avg_cycle_length"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="40dp"
+            android:textSize="30sp"
+            android:layout_gravity="center_horizontal"/>
+
+        <TextView
+            android:paddingLeft="40dp"
+            android:id="@+id/avg_period_length"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="30sp"
+            android:layout_gravity="center_horizontal"/>
+
+        <TextView
+            android:paddingLeft="40dp"
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/avg_cycle_length"
+            android:layout_marginRight="32dp"
+            android:layout_marginEnd="32dp"
+            android:layout_gravity="center_horizontal" />
+
+        <TextView
+            android:paddingLeft="40dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/avg_period_length"
+            android:layout_gravity="center_horizontal" />
+
+    </GridLayout>
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="70dp"
+            >
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="@string/your_history"
+                android:textSize="25sp"
+                android:gravity="center"
+                />
+        </RelativeLayout>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/previous_cycles"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:scrollbars="vertical">
+    </androidx.recyclerview.widget.RecyclerView>
+    </LinearLayout>
+</FrameLayout>

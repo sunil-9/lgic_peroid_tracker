@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "446576064220",
+    "firebase_url": "https://periodical-8ad98.firebaseio.com",
+    "project_id": "periodical-8ad98",
+    "storage_bucket": "periodical-8ad98.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:446576064220:android:a408ec02ff3eccb0f1e619",
+        "android_client_info": {
+          "package_name": "com.example.periodtracker"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "446576064220-8cnvdvjjhq3e84o677ngv7splveqc2oj.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.periodtracker",
+            "certificate_hash": "8abe53ccf9bb1c31a998e44ff8d8e5592721ff6f"
+          }
+        },
+        {
+          "client_id": "446576064220-0qbcb87b7rt9382b1f8pgmtc45cqbgri.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAlI33Yn4By3QOdylnuenV90gXyZkpi57Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "446576064220-0qbcb87b7rt9382b1f8pgmtc45cqbgri.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
