@@ -69,6 +69,9 @@ public class CalendarFragment extends Fragment {
         String lastPeriodDate =prefManager.getPrefValue(LAST_DATE_YEAR)+"-"+prefManager.getPrefValue(LAST_DATE_MONTH)+"-"+ prefManager.getPrefValue(LAST_DATE_DAY);
         last_period_date.setText(lastPeriodDate);
 
+
+        //TODO: Calender ko event haru track garni kasari????? :(
+
         return view;
     }
 
