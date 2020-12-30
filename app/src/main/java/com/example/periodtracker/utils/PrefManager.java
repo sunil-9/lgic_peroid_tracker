@@ -4,6 +4,8 @@ package com.example.periodtracker.utils;
 import android.content.Context;
 import android.content.SharedPreferences;
 
+import static com.example.periodtracker.utils.Constants.LAST_PERIOD_TIME;
+
 public class PrefManager {
 
     private static final String PREF_NAME = "Period";
@@ -23,9 +25,6 @@ public class PrefManager {
         pref = _context.getSharedPreferences(PREF_NAME, PRIVATE_MODE);
         editor = pref.edit();
     }
-
-
-
     public void setPeriodlength(String key, String value) {
         editor.putString(key, value);
         editor.commit();
@@ -52,5 +51,15 @@ public class PrefManager {
     public String getPrefValue(String key) {
         return pref.getString(key, "");
     }
+
+    public void setPrefLastPeriodTime( long value) {
+        editor.putLong(LAST_PERIOD_TIME, value);
+        editor.commit();
+    }
+
+    public long getPrefLastPeriodTime() {
+        return pref.getLong(LAST_PERIOD_TIME, 1234512345l);
+    }
+
 
 }

@@ -31,5 +31,25 @@
     <string name="remaining">Remaining</string>
     <string name="your_last_period_date">Your last period date</string>
     <string name="your_history">Your History</string>
+    <string name="change_email_address">Change Email Address</string>
+
+
+    <string name="txt_view_lat">Latitude:</string>
+    <string name="txt_view_lon">Longitude:</string>
+    <string name="txt_view_alt">Altitude:</string>
+
+    <string name="GPS_permissions">You must accept the permissions to use the application</string>
+    <string name="btn_watch_permissions">Watch Permissions</string>
+    <string name="btn_close">Close</string>
+
+    <string name="GPS_disabled">It seems that your GPS is disabled, do you want to activate it?</string>
+    <string name="Network_disabled">It seems that your connection is disabled, do you want to activate it?</string>
+    <string name="btn_yes">Yes</string>
+    <string name="btn_no">No</string>
+    <string name="btn_loc_gps">Get GPS Location</string>
+    <string name="btn_loc_net">Get Location by Network</string>
+    <string name="permission_required_toast">Permission Required Toast</string>
+    <string name="permission_rationale_location">permission rationale_ ocation</string>
+    <string name="location_permission_denied">location permission denied</string>
 
 </resources>

@@ -1,16 +1,26 @@
 package com.example.periodtracker.model;
 
 public class HistoryModel {
-    String id,cycleStartDate,periodCycle,PeriodCycle;
+    String id,user_id,cycleStartDate,periodLength;
+    Long startTime;
 
     public HistoryModel() {
     }
 
-    public HistoryModel(String id, String cycleStartDate, String periodCycle, String periodCycle1) {
+    public HistoryModel(String id, String cycleStartDate, String periodLength, String user_id, Long startTime) {
         this.id = id;
+        this.user_id=user_id;
         this.cycleStartDate = cycleStartDate;
-        this.periodCycle = periodCycle;
-        PeriodCycle = periodCycle1;
+        this.periodLength = periodLength;
+        this.startTime = startTime;
+    }
+
+    public Long getStartTime() {
+        return startTime;
+    }
+
+    public void setStartTime(Long startTime) {
+        this.startTime = startTime;
     }
 
     public String getId() {
@@ -21,6 +31,14 @@ public class HistoryModel {
         this.id = id;
     }
 
+    public String getUser_id() {
+        return user_id;
+    }
+
+    public void setUser_id(String user_id) {
+        this.user_id = user_id;
+    }
+
     public String getCycleStartDate() {
         return cycleStartDate;
     }
@@ -29,11 +47,13 @@ public class HistoryModel {
         this.cycleStartDate = cycleStartDate;
     }
 
-    public String getPeriodCycle() {
-        return periodCycle;
+    public String getPeriodLength() {
+        return periodLength;
     }
 
-    public void setPeriodCycle(String periodCycle) {
-        this.periodCycle = periodCycle;
+    public void setPeriodLength(String periodLength) {
+        this.periodLength = periodLength;
     }
+
+
 }

@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.SafetyActivity">
+    <androidx.cardview.widget.CardView
+        android:id="@+id/first_layout"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="enter name"
+                android:gravity="center"
+                />
+            <EditText
+                android:id="@+id/first_person_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Phone"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="enter name"
+                android:gravity="center"
+                />
+            <EditText
+                android:id="@+id/first_person_phone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="name"/>
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+    <androidx.cardview.widget.CardView
+        android:id="@+id/second_layout"
+        android:layout_below="@id/first_layout"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="enter name"
+                android:gravity="center"
+                />
+            <EditText
+                android:id="@+id/second_person_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Phone"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="enter name"
+                android:gravity="center"
+                />
+            <EditText
+                android:id="@+id/second_person_phone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="name"/>
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+    <androidx.cardview.widget.CardView
+        android:id="@+id/third_layout"
+        android:layout_below="@id/second_layout"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="enter name"
+                android:gravity="center"
+                />
+            <EditText
+                android:id="@+id/third_person_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Phone"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="enter name"
+                android:gravity="center"
+                />
+            <EditText
+                android:id="@+id/third_person_phone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="name"/>
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+<Button
+    android:layout_below="@+id/third_layout"
+    android:id="@+id/save"
+    android:layout_margin="10dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="save"/>
+<Button
+    android:layout_below="@+id/save"
+    android:id="@+id/send_msg"
+    android:layout_margin="10dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="Send message"/>
+</RelativeLayout>

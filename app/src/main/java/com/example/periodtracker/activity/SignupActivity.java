@@ -6,6 +6,7 @@ import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.ProgressBar;
@@ -38,6 +39,7 @@ import android.widget.Toast;
 import com.example.periodtracker.R;
 
 import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Objects;
 
@@ -58,6 +60,7 @@ public class SignupActivity extends AppCompatActivity{
     private int mYear, mMonth, mDay;
     DatePickerDialog dialog;
     ProgressDialog progressDialog;
+    Date mtime;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,13 +68,10 @@ public class SignupActivity extends AppCompatActivity{
         setContentView(R.layout.activity_signup);
         setUpToolbar();
         progressBar= findViewById(R.id.progressBar);
-
         //for progress dialog
         progressDialog = new ProgressDialog(SignupActivity.this);
         progressDialog.setMessage(PLEASE_WAIT);
         progressDialog.setCanceledOnTouchOutside(false);
-
-
         //creating an instance of firebaseAuth
         firebaseAuth = FirebaseAuth.getInstance();
 
@@ -93,7 +93,6 @@ public class SignupActivity extends AppCompatActivity{
                 mMonth = c.get(Calendar.MONTH);
                 mDay = c.get(Calendar.DAY_OF_MONTH);
 
-
                 DatePickerDialog datePickerDialog = new DatePickerDialog(SignupActivity.this,
                         new DatePickerDialog.OnDateSetListener() {
 
@@ -101,12 +100,20 @@ public class SignupActivity extends AppCompatActivity{
                             @Override
                             public void onDateSet(DatePicker view, int year,
                                                   int monthOfYear, int dayOfMonth) {
+                                 Calendar cal = Calendar.getInstance();
+                                cal.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+                                cal.set(Calendar.MONTH, monthOfYear);
+                                cal.set(Calendar.YEAR, year);
+                                cal.set(Calendar.HOUR,12);
+                                cal.set(Calendar.MINUTE,0);
+                                cal.set(Calendar.SECOND,0);
+                                cal.set(Calendar.MILLISECOND,0);
+                                 mtime = cal.getTime();
+                                Log.e("TAG", "onClick:  millisecond  time after set"+mtime.getTime());
                                 last_date_day = ""+dayOfMonth;
-                                last_date_month = ""+monthOfYear;
+                                last_date_month = ""+(monthOfYear+1);
                                 last_date_year = ""+year;
                                 Last_period_date.setText("Year: "+last_date_year+"month :" +last_date_month+"day :"+last_date_day);
-
-
                             }
                         }, mYear, mMonth, mDay);
                 datePickerDialog.show();
@@ -123,8 +130,8 @@ public class SignupActivity extends AppCompatActivity{
                 final String user_name= userName.getText().toString();
                 final String email = emailAddress.getText().toString();
                 final String txt_password=password.getText().toString();
-                final String period_cycle=et_period_length.getText().toString().trim();
-                final String period_length=et_period_cycle.getText().toString();
+                final String period_cycle=et_period_cycle.getText().toString().trim();
+                final String period_length=et_period_length.getText().toString();
                 int checkedId=radioGroup.getCheckedRadioButtonId();
                 RadioButton terms = radioGroup.findViewById(checkedId);
                 if(terms == null){
@@ -179,7 +186,7 @@ public class SignupActivity extends AppCompatActivity{
                     String userId = rUser.getUid();
                     databaseReference = FirebaseDatabase.getInstance(Constants.DB_URL).getReference("Users").child(userId);
                     UserModel userModel = new UserModel(userId,user_name,email,txt_period_cycle,txt_period_length,last_date_day,
-                            last_date_month,last_date_year,"default");
+                            last_date_month,last_date_year,"default",mtime.getTime());
 
                     databaseReference.setValue(userModel).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override

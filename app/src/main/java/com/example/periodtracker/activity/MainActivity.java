@@ -1,14 +1,14 @@
 package com.example.periodtracker.activity;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.fragment.app.Fragment;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.fragment.app.Fragment;
 
 import com.example.periodtracker.R;
 import com.example.periodtracker.fragments.CalendarFragment;
@@ -21,14 +21,15 @@ public class MainActivity extends AppCompatActivity {
     FirebaseAuth mauth;
 
     Toolbar toolbar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        mauth =  FirebaseAuth.getInstance();
+        mauth = FirebaseAuth.getInstance();
 
         //for toolbar
-         toolbar = findViewById(R.id.taskbar_common);
+        toolbar = findViewById(R.id.taskbar_common);
         setSupportActionBar(toolbar);
 
         //instance of bottomNavigation
@@ -40,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
                 .replace(R.id.fragment_container, new OverviewFragment()).commit();
         btnNav.setOnNavigationItemSelectedListener(navListener);
     }
+
     //Listener bottom navigation bar
     private BottomNavigationView.OnNavigationItemSelectedListener navListener = new BottomNavigationView.OnNavigationItemSelectedListener() {
         @Override
@@ -62,27 +64,33 @@ public class MainActivity extends AppCompatActivity {
             return true;
         }
     };
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.mainmenu, menu);
         return super.onCreateOptionsMenu(menu);
     }
+
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case R.id.setting:
                 startActivity(new Intent(MainActivity.this, SettingActivity.class));
                 break;
-       case R.id.profile:
-                startActivity(new Intent(MainActivity.this, ProfileActivity.class));
-
-                break;
-       case R.id.logout:
+            case R.id.logout:
                 mauth.signOut();
                 startActivity(new Intent(MainActivity.this, SplashScreenActivity.class));
                 finish();
                 break;
-       case R.id.exit:
+            case R.id.safety:
+                startActivity(new Intent(MainActivity.this, SafetyActivity.class));
+                finish();
+                break;
+            case R.id.find:
+                startActivity(new Intent(MainActivity.this, GetLocationActivity.class));
+                finish();
+                break;
+            case R.id.exit:
                 finish();
                 break;
         }

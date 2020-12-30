@@ -2,6 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.periodtracker">
 
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.SEND_SMS"/>
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -9,19 +13,21 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Design.Light.NoActionBar">
-        <activity android:name="com.example.periodtracker.activity.SettingActivity"></activity>
-        <activity android:name="com.example.periodtracker.activity.ProfileActivity" />
-        <activity android:name="com.example.periodtracker.activity.SplashScreenActivity">
+        <activity android:name=".activity.GetLocationActivity"></activity>
+        <activity android:name=".activity.SafetyActivity" />
+        <activity android:name=".activity.ChangePasswordActivity" />
+        <activity android:name=".activity.SettingActivity" />
+        <activity android:name=".activity.SplashScreenActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.example.periodtracker.activity.ForgetPasswordActivity" />
-        <activity android:name="com.example.periodtracker.activity.SignupActivity" />
-        <activity android:name="com.example.periodtracker.activity.LoginActivity" />
-        <activity android:name="com.example.periodtracker.activity.MainActivity" />
+        <activity android:name=".activity.ForgetPasswordActivity" />
+        <activity android:name=".activity.SignupActivity" />
+        <activity android:name=".activity.LoginActivity" />
+        <activity android:name=".activity.MainActivity" />
     </application>
 
 </manifest>

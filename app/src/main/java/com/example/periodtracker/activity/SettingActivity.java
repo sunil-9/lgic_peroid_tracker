@@ -1,14 +1,9 @@
 package com.example.periodtracker.activity;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -17,10 +12,16 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+
 import com.example.periodtracker.R;
 import com.example.periodtracker.model.UserModel;
-import com.example.periodtracker.utils.Constants;
 import com.example.periodtracker.utils.PrefManager;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -31,23 +32,21 @@ import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import static com.example.periodtracker.utils.Constants.DB_URL;
-import static com.example.periodtracker.utils.Constants.LAST_DATE_DAY;
-import static com.example.periodtracker.utils.Constants.LAST_DATE_MONTH;
-import static com.example.periodtracker.utils.Constants.LAST_DATE_YEAR;
 import static com.example.periodtracker.utils.Constants.PERIOD_CYCLE;
 import static com.example.periodtracker.utils.Constants.PERIOD_LENGTH;
 import static com.example.periodtracker.utils.Constants.PLEASE_WAIT;
 
 public class SettingActivity extends AppCompatActivity {
     Toolbar toolbar;
-    LinearLayout peroid_cycle, peroid_length;
+    LinearLayout peroid_cycle, peroid_length, change_pw, change_email,change_username;
     PrefManager prefManager;
-
+    FirebaseUser user;
+    FirebaseAuth mAuth;
     ProgressDialog progressDialog;
-
     //firebase
     private DatabaseReference mdatabase;
     private FirebaseAuth mauth;
@@ -64,17 +63,42 @@ public class SettingActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         peroid_cycle = findViewById(R.id.peroid_cycle);
         peroid_length = findViewById(R.id.peroid_length);
-
+        mAuth = FirebaseAuth.getInstance();
+        user = mAuth.getCurrentUser();
         //for progress dialog
         progressDialog = new ProgressDialog(SettingActivity.this);
         progressDialog.setMessage(PLEASE_WAIT);
         progressDialog.setCanceledOnTouchOutside(false);
 
+        //change  email and password
+        change_email = findViewById(R.id.change_email);
+        change_pw = findViewById(R.id.change_pw);
+        change_username=findViewById(R.id.change_username);
+        change_email.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                changeData("Change Email Address","enter username here",true);
+
+            }
+        });
+        change_username.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                changeData("Change User Name","enter username here",false);
+            }
+        });
+        change_pw.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+startActivity(new Intent(SettingActivity.this,ChangePasswordActivity.class));
+            }
+        });
+
         //firebase
         mauth = FirebaseAuth.getInstance();
         FirebaseUser muser = mauth.getCurrentUser();
-         q  = FirebaseDatabase.getInstance(DB_URL).getReference("Users").child(mauth.getUid());
-       List<String> details =getPeroidDetailsFirebase();
+        q = FirebaseDatabase.getInstance(DB_URL).getReference("Users").child(mauth.getUid());
+        List<String> details = getPeroidDetailsFirebase();
         peroid_cycle.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -98,10 +122,10 @@ public class SettingActivity extends AppCompatActivity {
                             return;
                         }
                         progressDialog.show();
-                        String input_text =input_field.getText().toString().trim();
+                        String input_text = input_field.getText().toString().trim();
                         Toast.makeText(SettingActivity.this, "length is " + input_field.getText().toString(), Toast.LENGTH_SHORT).show();
                         prefManager.setPeriodCycle(PERIOD_CYCLE, input_text);
-                        setPeroidDetailsFirebase("cycle",  input_text);
+                        setPeroidDetailsFirebase("cycle", input_text);
                         progressDialog.dismiss();
                         dialog.dismiss();
                     }
@@ -126,11 +150,11 @@ public class SettingActivity extends AppCompatActivity {
                 ok_btn.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        String input_text =input_field.getText().toString().trim();
+                        String input_text = input_field.getText().toString().trim();
                         progressDialog.show();
                         Toast.makeText(SettingActivity.this, "length is " + input_field.getText().toString(), Toast.LENGTH_SHORT).show();
                         prefManager.setPeriodCycle(PERIOD_LENGTH, input_text);
-                        setPeroidDetailsFirebase("length",  input_text);
+                        setPeroidDetailsFirebase("length", input_text);
                         progressDialog.dismiss();
                         dialog.dismiss();
 
@@ -141,7 +165,48 @@ public class SettingActivity extends AppCompatActivity {
 
 
     }
-    public void setPeroidDetailsFirebase(String field, String input_text){
+
+  private void changeData(String title_text,String hint,boolean changeEmailId) {
+      AlertDialog.Builder myDialog = new AlertDialog.Builder(this);
+      LayoutInflater inflater = LayoutInflater.from(this);
+      View myView = inflater.inflate(R.layout.name_popup, null);
+      myDialog.setView(myView);
+      final AlertDialog dialog = myDialog.create();
+      final TextView title = myView.findViewById(R.id.title);
+      final EditText input_field = myView.findViewById(R.id.input_field);
+      title.setText(title_text);
+      input_field.setHint(hint);
+      Button btn_save = myView.findViewById(R.id.btn_save);
+      HashMap<String, Object> map = new HashMap<>();
+      dialog.show();
+      btn_save.setOnClickListener(new View.OnClickListener() {
+          @Override
+          public void onClick(View v) {
+              String mdata = input_field.getText().toString().trim();
+              if (TextUtils.isEmpty(mdata)) {
+                  input_field.setError("input field is empty");
+                  return;
+              }
+              if(changeEmailId) {
+                  updateUserEmail(mdata);
+                  map.put("email", mdata);
+              }
+              else {
+                  map.put("username", mdata);
+              }
+
+
+
+
+              FirebaseDatabase.getInstance(DB_URL).getReference().child("Users").child(user.getUid()).updateChildren(map);
+              Toast.makeText(SettingActivity.this, "Data Updated", Toast.LENGTH_SHORT).show();
+              dialog.dismiss();
+          }
+      });
+
+  }
+
+    public void setPeroidDetailsFirebase(String field, String input_text) {
 
         q.addValueEventListener(new ValueEventListener() {
             @Override
@@ -156,8 +221,9 @@ public class SettingActivity extends AppCompatActivity {
             }
         });
     }
-    public List<String> getPeroidDetailsFirebase(){
-        List <String> returnStrings = new ArrayList<String>();
+
+    public List<String> getPeroidDetailsFirebase() {
+        List<String> returnStrings = new ArrayList<String>();
         q.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -172,5 +238,17 @@ public class SettingActivity extends AppCompatActivity {
             }
         });
         return returnStrings;
+    }
+
+    private void updateUserEmail(String email) {
+        user.updateEmail(email)
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if (task.isSuccessful()) {
+                            Toast.makeText(SettingActivity.this, "successful updated email", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
     }
 }

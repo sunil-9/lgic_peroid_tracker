@@ -4,11 +4,15 @@
         android:title="Setting"
         android:icon="@drawable/ic_setting"
         />
-    <item android:id="@+id/profile"
-        android:title="@string/profile"
-        android:icon="@drawable/ic_person"
-        />
 
+    <item android:id="@+id/safety"
+        android:title="Safety"
+        android:icon="@drawable/ic_back"
+        />
+    <item android:id="@+id/find"
+        android:title="Find your Person"
+        android:icon="@drawable/ic_back"
+        />
     <item android:id="@+id/logout"
         android:title="@string/log_out"
         android:icon="@drawable/ic_back"

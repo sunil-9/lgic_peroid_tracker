@@ -46,7 +46,6 @@ dependencies {
     implementation 'com.rengwuxian.materialedittext:library:2.1.4'
     implementation "androidx.cardview:cardview:1.0.0"
     //calendar
-//    implementation 'pl.rafman.widgets:scroll-calendar:1.5.1'
-    implementation 'com.applandeo:material-calendar-view:1.0.1'
-//    implementation 'com.github.sundeepk:compact-calendar-view:3.0.0'
+    implementation 'com.github.sundeepk:compact-calendar-view:3.0.0'
+    //location
 }

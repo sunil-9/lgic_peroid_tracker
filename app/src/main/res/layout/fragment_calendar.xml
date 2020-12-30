@@ -9,35 +9,85 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         >
-    <TextView
-        android:id="@+id/select"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/select_your_date"
-        android:textSize="30sp"
-        android:gravity="center"
-        android:padding="60dp"
-        android:textColor="@color/text_color"
-        android:layout_marginTop="10dp"
-        />
-        <com.applandeo.materialcalendarview.CalendarView
-            android:id="@+id/calendarView"
-            android:layout_below="@+id/select"
+
+        <TextView
+            android:id="@+id/select"
             android:layout_width="match_parent"
-            android:layout_height="400dp"
-            app:datePicker="true"
-            app:headerColor="@color/colorPrimary"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:selectionColor="@color/pink"
-            app:todayLabelColor="@color/black" />
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:padding="30dp"
+            android:text="@string/select_your_date"
+            android:textColor="@color/text_color"
+            android:textSize="30sp" />
+
+        <LinearLayout
+            android:id="@id/cal_layout"
+            android:layout_below="@id/select"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp">
+
+            <LinearLayout
+                android:id="@+id/viewselect"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/round_cornor"
+                android:backgroundTint="#B71C1C"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/showSrollMonth"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:paddingTop="7dp"
+                    android:text="April 2019"
+                    android:textAlignment="center"
+                    android:textColor="#fff"
+                    android:textSize="25dp"
+                    android:textStyle="bold" />
+
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/maincalender"
+                android:layout_width="match_parent"
+                android:layout_height="310dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/round_cornor"
+                android:backgroundTint="#ffe95451"
+                android:orientation="vertical">
+
+                <com.github.sundeepk.compactcalendarview.CompactCalendarView
+                    android:id="@+id/compactcalendar_view"
+                    android:layout_width="fill_parent"
+                    android:layout_height="290dp"
+                    android:layout_marginLeft="2dp"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginRight="2dp"
+                    android:layout_marginBottom="2dp"
+                    android:paddingTop="10dp"
+                    app:compactCalendarCurrentDayBackgroundColor="#3C53D5"
+                    app:compactCalendarCurrentDayIndicatorStyle="fill_large_indicator"
+                    app:compactCalendarCurrentSelectedDayBackgroundColor="#E57373"
+                    app:compactCalendarEventIndicatorStyle="no_fill_large_indicator"
+                    app:compactCalendarMultiEventIndicatorColor="#fff"
+                    app:compactCalendarTargetHeight="300dp"
+                    app:compactCalendarTextSize="20dp" />
+            </LinearLayout>
+        </LinearLayout>
 
         <RelativeLayout
             android:id="@+id/last_period_date"
-            android:layout_below="@+id/calendarView"
+            android:layout_below="@+id/cal_layout"
             android:layout_width="match_parent"
-            android:layout_height="100dp"
+            android:layout_height="80dp"
             >
             <TextView
                 android:id="@+id/lastDate"
@@ -49,8 +99,9 @@
         </RelativeLayout>
         <RelativeLayout
             android:layout_below="@+id/last_period_date"
+            android:id="@+id/old_layout"
             android:layout_width="match_parent"
-            android:layout_height="100dp"
+            android:layout_height="80dp"
             >
             <TextView
                 android:id="@+id/tv_lastDate"
@@ -59,9 +110,36 @@
                 android:textSize="30sp"
                 android:gravity="center"
                 android:text="Date"/>
-
         </RelativeLayout>
 
+
+        <RelativeLayout
+            android:id="@+id/next_period_date"
+            android:layout_below="@+id/old_layout"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            >
+            <TextView
+                android:id="@+id/nextDate"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textSize="30sp"
+                android:gravity="center"
+                android:text="Next Peroid Predected date:"/>
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_below="@+id/next_period_date"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            >
+            <TextView
+                android:id="@+id/tv_nextDate"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textSize="30sp"
+                android:gravity="center"
+                android:text="Date"/>
+        </RelativeLayout>
 
     </RelativeLayout>
 </FrameLayout>

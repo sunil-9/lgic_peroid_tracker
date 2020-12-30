@@ -8,6 +8,11 @@
     <include
         android:id="@+id/toolbar"
         layout="@layout/toolbar"/>
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
 
     <TextView
         android:id="@+id/title"
@@ -256,5 +261,6 @@
             />
 
     </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
 
 </RelativeLayout>

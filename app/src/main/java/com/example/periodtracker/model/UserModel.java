@@ -7,11 +7,12 @@ import java.util.Map;
 
 public class UserModel {
     String userId,username,email,cycle,length,last_date_day,last_date_month,last_date_year,imageUrl;
+    Long timeInMillis;
 
     public UserModel() {
     }
 
-    public UserModel(String userId, String username, String email, String cycle, String length, String last_date_day, String last_date_month, String last_date_year, String imageUrl) {
+    public UserModel(String userId, String username, String email, String cycle, String length, String last_date_day, String last_date_month, String last_date_year, String imageUrl, Long timeInMillis) {
         this.userId = userId;
         this.username = username;
         this.email = email;
@@ -21,7 +22,17 @@ public class UserModel {
         this.last_date_month = last_date_month;
         this.last_date_year = last_date_year;
         this.imageUrl = imageUrl;
+        this.timeInMillis =timeInMillis;
     }
+
+    public Long getTimeInMillis() {
+        return timeInMillis;
+    }
+
+    public void setTimeInMillis(Long timeInMillis) {
+        this.timeInMillis = timeInMillis;
+    }
+
     public String getUserId() {
         return userId;
     }

@@ -108,6 +108,7 @@ public class LoginActivity extends AppCompatActivity {
                             prefManager.setPrefValue(LAST_DATE_YEAR, user.getLast_date_year());
                             prefManager.setPrefValue(PERIOD_CYCLE, user.getCycle());
                             prefManager.setPrefValue(PERIOD_LENGTH, user.getLength());
+                            prefManager.setPrefLastPeriodTime(user.getTimeInMillis());
                         }
 
                         @Override

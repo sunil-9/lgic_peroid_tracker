@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        android:textSize="40sp"
+        android:textColor="@color/black"
+        android:gravity="center"
+        android:text="change title"/>
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/input_field"
+        android:layout_below="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_margin="15dp"
+        android:textSize="20sp"
+        android:layout_height="wrap_content"
+        android:hint="edit here"/>
+    <Button
+         android:id="@+id/btn_save"
+        android:layout_below="@+id/input_field"
+       android:layout_width="match_parent"
+        android:layout_margin="15dp"
+        android:textSize="20sp"
+        android:layout_height="wrap_content"
+        android:text="Save"/>
+
+
+</RelativeLayout>
